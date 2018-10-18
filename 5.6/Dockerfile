@@ -18,3 +18,4 @@ EXPOSE 3306
 VOLUME ["/var/lib/mysql", "/var/log/mysql"]
 # change ENTRYPOINT exec some custom command
 ENTRYPOINT [ "/run/docker-entrypoint.sh" ]
+CMD [ "mysqld" ]
