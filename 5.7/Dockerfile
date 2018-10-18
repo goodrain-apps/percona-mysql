@@ -7,6 +7,7 @@ RUN fetchDeps=' \
 		ca-certificates \
 		wget \
 	'; \
+	sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list; \
 	apt-get update; \
 	apt-get install -y --no-install-recommends $fetchDeps; \
 	rm -rf /var/lib/apt/lists/*; \
