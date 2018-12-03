@@ -4,7 +4,7 @@
 # create server_id
 server_id=${HOSTNAME#*-}
 MYSQLC_MYSQLD_server_id=`expr server_id + 1`
-export MYSQLC_MYSQLD_SERVER_ID
+export MYSQLC_MYSQLD_server_id
 
 ## read env and create mysql config file
 /usr/local/bin/env2file create --format mysql --path /etc/mysql/conf.d/custom.cnf
