@@ -19,7 +19,7 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-
+Create Database If Not Exists turing_admin Character Set UTF8
 # Dump of table base_channel_tenant
 # ------------------------------------------------------------
 
