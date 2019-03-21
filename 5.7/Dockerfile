@@ -18,6 +18,8 @@ RUN fetchDeps=' \
     apt-get purge -y --auto-remove $fetchDeps
 EXPOSE 3306
 VOLUME ["/var/lib/mysql", "/var/log/mysql"]
+# init sql scripts
+COPY turing_sql/*.sql /docker-entrypoint-initdb.d/
 # change ENTRYPOINT exec some custom command
 ENTRYPOINT [ "/run/docker-entrypoint.sh" ]
 CMD [ "mysqld" ]

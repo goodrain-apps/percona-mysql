@@ -1,9 +1,9 @@
 #!/bin/bash
 # do something before mysql start
-
+[ $DEBUG ] && set -x
 # create server_id
 server_id=${HOSTNAME#*-}
-MYSQLC_MYSQLD_SERVER_ID=`expr $server_id + ${STEP_NUM}`
+MYSQLC_MYSQLD_SERVER_ID=`expr $server_id + ${STEP_NUM:-0}`
 export MYSQLC_MYSQLD_SERVER_ID
 
 ## read env and create mysql config file
