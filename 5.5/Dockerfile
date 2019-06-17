@@ -11,7 +11,7 @@ RUN fetchDeps=' \
 	apt-get update; \
 	apt-get install -y --no-install-recommends $fetchDeps; \
 	rm -rf /var/lib/apt/lists/*; \
-    wget -O /usr/local/bin/env2file -q https://github.com/barnettZQG/env2file/releases/download/0.1.1/env2file-linux; \
+    wget -O /usr/local/bin/env2file -q https://github.com/barnettZQG/env2file/releases/download/v0.1/env2file-linux; \
     chmod +x /run/docker-entrypoint.sh && chmod +x /usr/local/bin/env2file; \
     apt-get purge -y --auto-remove $fetchDeps
 EXPOSE 3306
