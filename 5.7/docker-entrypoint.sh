@@ -19,13 +19,6 @@ else
    export MYSQLC_MYSQLD_log-bin=mysql-bin
 fi
 
-# define server_uuid
-uuid="server-uuid = "$(cat /proc/sys/kernel/random/uuid)
-echo "[auto]" > /var/lib/mysql/auto.cnf
-echo $uuid >> /var/lib/mysql/auto.cnf
-
-
-
 ## read env and create mysql config file
 /usr/local/bin/env2file create --format mysql --path /etc/mysql/conf.d/custom.cnf
 # start mysql

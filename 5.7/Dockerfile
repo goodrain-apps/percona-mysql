@@ -29,5 +29,6 @@ VOLUME ["/var/lib/mysql", "/var/log/mysql"]
 ENV MYSQL_USER=admin
 ENV MYSQL_DATABASE=Initialize
 ENV MYSQL_PASSWORD=qwertyuiop
+ENV MYSQL_ROOT_PASSWORD=changeme
 ENTRYPOINT [ "/run/docker-entrypoint.sh" ]
 CMD [ "mysqld" ]
