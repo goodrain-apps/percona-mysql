@@ -19,7 +19,7 @@ tmpdir   = /tmp
 lc-messages-dir  = /usr/share/mysql
 explicit_defaults_for_timestamp
 
-#log-error    = /var/log/mysql/error.log
+log-error    = /var/log/mysql/error.log
 
 # Recommended in standard MySQL setup
 sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_ALL_TABLES

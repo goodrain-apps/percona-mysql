@@ -1,10 +1,30 @@
 #!/bin/bash
 # do something before mysql start
 
-# create server_id
-# server_id=${HOSTNAME#*-}
-# MYSQLC_MYSQLD_SERVER_ID=`expr $server_id + ${STEP_NUM}`
-# export MYSQLC_MYSQLD_SERVER_ID
+# touch error.log
+[ ! -f /var/log/mysql/error.log ] && touch /var/log/mysql/error.log
+
+# define server_id and anyother cluster configuration
+if [ ${MYSQL_ROLE} == "master" ];then
+   server_id=${HOSTNAME#*-}
+   MYSQLC_MYSQLD_SERVER_ID=`expr $server_id + 1`
+   export MYSQLC_MYSQLD_SERVER_ID
+   export MYSQLC_MYSQLD_binlog-ignore-db=mysql
+   export MYSQLC_MYSQLD_log-bin=mysql-bin
+else 
+   server_id=${HOSTNAME#*-}
+   MYSQLC_MYSQLD_SERVER_ID=`expr $server_id + 2`
+   export MYSQLC_MYSQLD_SERVER_ID
+   export MYSQLC_MYSQLD_replicate-ignore-db=mysql
+   export MYSQLC_MYSQLD_log-bin=mysql-bin
+fi
+
+# define server_uuid
+uuid="server-uuid = "$(cat /proc/sys/kernel/random/uuid)
+echo "[auto]" > /var/lib/mysql/auto.cnf
+echo $uuid >> /var/lib/mysql/auto.cnf
+
+
 
 ## read env and create mysql config file
 /usr/local/bin/env2file create --format mysql --path /etc/mysql/conf.d/custom.cnf

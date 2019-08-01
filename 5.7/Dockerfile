@@ -5,6 +5,7 @@ ENV TZ=Asia/Shanghai
 ADD docker-entrypoint.sh /run/docker-entrypoint.sh
 ADD ./run/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 ADD ./run/mysqld.cnf /etc/mysql/percona-server.conf.d/mysqld.cnf
+ADD ./sql/* /docker-entrypoint-initdb.d/
 # RUN fetchDeps=' \
 # 		ca-certificates \
 # 		wget \
