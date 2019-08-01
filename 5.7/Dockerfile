@@ -2,7 +2,7 @@ FROM percona:5.7.23-stretch
 LABEL creater="barnett"
 ENV MYSQL_VERSION=5.7.23
 ENV TZ=Asia/Shanghai
-
+ADD docker-entrypoint.sh /run/docker-entrypoint.sh
 
 # RUN fetchDeps=' \
 # 		ca-certificates \
@@ -21,7 +21,7 @@ RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list; \
     rm -rf /var/lib/apt/lists/*; \
     wget -O /usr/local/bin/env2file -q https://github.com/barnettZQG/env2file/releases/download/0.1.1/env2file-linux; \
     chmod +x /run/docker-entrypoint.sh && chmod +x /usr/local/bin/env2file;
-ADD docker-entrypoint.sh /run/docker-entrypoint.sh
+
 ADD ./run/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 ADD ./run/mysqld.cnf /etc/mysql/percona-server.conf.d/mysqld.cnf
 ADD ./sql /tmp/
