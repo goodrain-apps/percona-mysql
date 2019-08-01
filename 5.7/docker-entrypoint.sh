@@ -3,6 +3,7 @@
 
 # touch error.log
 [ ! -f /var/log/mysql/error.log ] && touch /var/log/mysql/error.log
+chmod 777 /var/log/mysql/error.log
 
 # define server_id and anyother cluster configuration
 if [ ${MYSQL_ROLE} == "master" ];then
