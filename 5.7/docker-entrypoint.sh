@@ -12,14 +12,14 @@ if [ ${MYSQL_ROLE} == "master" ];then
    export MYSQLC_MYSQLD_SERVER_ID
    export MYSQLC_MYSQLD_binlog_ignore_db=mysql
    export MYSQLC_MYSQLD_log_bin=mysql-bin
-   cp -a /tmp/*.sql /docker-entrypoint-initdb.d/
+   #cp -a /tmp/*.sql /docker-entrypoint-initdb.d/
 else 
    server_id=${HOSTNAME#*-}
    MYSQLC_MYSQLD_SERVER_ID=`expr $server_id + 2`
    export MYSQLC_MYSQLD_SERVER_ID
    export MYSQLC_MYSQLD_replicate_ignore_db=mysql
    export MYSQLC_MYSQLD_log_bin=mysql-bin
-   cp -a /tmp/*.sh /docker-entrypoint-initdb.d/
+   cp -a /tmp/init-slave.sql /docker-entrypoint-initdb.d/
 fi
 
 ## read env and create mysql config file
