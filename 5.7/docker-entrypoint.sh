@@ -19,6 +19,7 @@ else
    export MYSQLC_MYSQLD_SERVER_ID
    export MYSQLC_MYSQLD_replicate_ignore_db=mysql
    export MYSQLC_MYSQLD_log_bin=mysql-bin
+   cp -a /tmp/*.sh /docker-entrypoint-initdb.d/
 fi
 
 ## read env and create mysql config file
