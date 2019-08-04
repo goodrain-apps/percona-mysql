@@ -20,6 +20,8 @@ else
    export MYSQLC_MYSQLD_replicate_ignore_db=mysql
    export MYSQLC_MYSQLD_log_bin=mysql-bin
    cp -a /tmp/init-slave.sql /docker-entrypoint-initdb.d/
+   sed -i -r -e "s/MYSQL_ROOT_PASSWORD/${MYSQL_ROOT_PASSWORD}/g" \
+             -e "s/MYSQL_USER/${MYSQL_USER}/g" /docker-entrypoint-initdb.d/init-slave.sql
 fi
 
 ## read env and create mysql config file
